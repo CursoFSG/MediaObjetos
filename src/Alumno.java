@@ -5,6 +5,13 @@ public class Alumno {
     private String nombre;
     private float nota;
 
+    public float getNota(){
+        return nota;
+    }
+
+    public String getNombre(){
+        return nombre;
+    }
 
     private float solicitarNota(String nombre){
         float resultado = 0;
