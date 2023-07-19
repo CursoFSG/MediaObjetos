@@ -15,6 +15,7 @@ public class Curso {
 
     public void alta(){
         for (int n=0; n<NUMERO_ALUMNOS;n++){
+            alumnos[n] = new Alumno();
             alumnos[n].alta();
         }
     }
