@@ -11,11 +11,13 @@ public class Curso {
     public Curso(){
         notaMedia = -1;
         alumnos = new Alumno[NUMERO_ALUMNOS];
+         for (int n=0; n<NUMERO_ALUMNOS;n++){
+            alumnos[n] = new Alumno();
+        }
     }
 
     public void alta(){
         for (int n=0; n<NUMERO_ALUMNOS;n++){
-            alumnos[n] = new Alumno();
             alumnos[n].alta();
         }
     }
