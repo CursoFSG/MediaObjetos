@@ -5,6 +5,15 @@ public class Alumno {
     private String nombre;
     private float nota;
 
+    public void setNota(float nota) throws Exception{
+        if (nota>=0 && nota <=10){
+            this.nota = nota;
+        }
+        else{
+            throw new Exception("Parametro erroneo", null);
+        }
+    }
+
     public float getNota(){
         return nota;
     }
