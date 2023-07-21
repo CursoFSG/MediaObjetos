@@ -1,8 +1,10 @@
+import java.util.ArrayList;
+
 public class Curso {
     private final int NUMERO_ALUMNOS = 5;
 
     private float notaMedia;
-    private Alumno[] alumnos;
+    private ArrayList<Alumno> alumnos;
 
     public float getNotaMedia(){
         return notaMedia;
@@ -10,35 +12,47 @@ public class Curso {
 
     public Curso(){
         notaMedia = -1;
-        alumnos = new Alumno[NUMERO_ALUMNOS];
-         for (int n=0; n<NUMERO_ALUMNOS;n++){
-            alumnos[n] = new Alumno();
-        }
+        alumnos = new ArrayList<Alumno>();
     }
 
     public void alta(){
+        Alumno alumno;
         for (int n=0; n<NUMERO_ALUMNOS;n++){
-            alumnos[n].alta();
+            alumno = new Alumno();
+            alumno.alta();
+            alumnos.add(alumno);
         }
     }
 
     public void calcularMedia(){
         float sumaNotas = 0;
-        for (int n=0; n<NUMERO_ALUMNOS;n++){
-            sumaNotas = sumaNotas + alumnos[n].getNota();
+        /*for (int n=0; n<NUMERO_ALUMNOS;n++){
+            sumaNotas = sumaNotas + alumnos.get(n).getNota();
+        }*/
+
+        for (Alumno alumno : alumnos) {
+            sumaNotas = sumaNotas + alumno.getNota();
         }
+
+
         this.notaMedia =  sumaNotas / NUMERO_ALUMNOS;
     }
 
-    public Alumno[] dameAlumnosEncimaMedia(){
-        Alumno[] lista = new Alumno[NUMERO_ALUMNOS];
+    public ArrayList<Alumno> dameAlumnosEncimaMedia(){
+        ArrayList<Alumno> lista = new ArrayList<Alumno>();
 
-        for (int n=0; n< NUMERO_ALUMNOS; n++){
+       /* for (int n=0; n< NUMERO_ALUMNOS; n++){
             if (alumnos[n].getNota()>this.notaMedia){
                 lista[n] = alumnos[n];
             }
             else{
                 lista[n] = null;
+            }
+        }*/
+
+        for (Alumno al : alumnos){
+            if (al.getNota()>this.notaMedia){
+                lista.add(al);
             }
         }
 
@@ -46,9 +60,9 @@ public class Curso {
     }
 
     public void escribeAlumnosEncimaMedia(){
-        for (int n=0; n< NUMERO_ALUMNOS; n++){
-            if (alumnos[n].getNota()>this.notaMedia){
-               System.out.println(alumnos[n].getNombre());
+        for (Alumno alumno : alumnos){
+            if (alumno.getNota()>this.notaMedia){
+               System.out.println(alumno.getNombre());
             }
            
         }
