@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Alumno {
     private Scanner lector = new Scanner(System.in);
     private String nombre;
+    private String apellido;
     private float nota;
 
     public void setNota(float nota) throws Exception{
@@ -19,7 +20,7 @@ public class Alumno {
     }
 
     public String getNombre(){
-        return nombre;
+        return nombre + " " + apellido;
     }
 
     private float solicitarNota(String nombre){
@@ -37,6 +38,10 @@ public class Alumno {
                     System.out.println("El valor tiene que estar entre 0 y  " + 10);
                 }
             }
+            catch (NullPointerException e){
+                fallo = true;
+                System.out.println("String vacio.");    
+            }
             catch (Exception e){
                 fallo = true;
                 System.out.println("Valor inválido");
@@ -46,9 +51,15 @@ public class Alumno {
         return resultado;
     }
 
-    public void alta(){
-        System.out.println("Dime tu nombre:");
-        this.nombre = lector.nextLine();
-        this.nota = solicitarNota(nombre);
+    public void alta() throws AlumnoExcepcion{
+            System.out.println("Dime tu nombre:");
+            this.nombre = lector.nextLine();
+            System.out.println("Dime tu apellido:");
+            this.apellido = lector.nextLine();
+            if (nombre.equals("a")){
+                throw new AlumnoExcepcion("No admitimos alumnos a");
+            }
+
+            this.nota = solicitarNota(nombre);
     }
 }

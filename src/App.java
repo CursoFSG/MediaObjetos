@@ -10,16 +10,16 @@ public class App {
         System.out.println("La media es : " + media);
 
 
-        ArrayList<Alumno> alumnosEncimaMedia = curso.dameAlumnosEncimaMedia();
-       /* for (int posicionAlumno = 0; posicionAlumno<alumnosEncimaMedia.length; posicionAlumno++){
+       /* ArrayList<Alumno> alumnosEncimaMedia = curso.dameAlumnosEncimaMedia();
+        for (int posicionAlumno = 0; posicionAlumno<alumnosEncimaMedia.length; posicionAlumno++){
             if ( alumnosEncimaMedia[posicionAlumno]!= null){
                 System.out.println(alumnosEncimaMedia[posicionAlumno].getNombre());
             }
-        }*/
+        }
         
         for (Alumno alumno : alumnosEncimaMedia){
             System.out.println(alumno.getNombre());
-        }
+        }*/
 
         curso.escribeAlumnosEncimaMedia();
     }

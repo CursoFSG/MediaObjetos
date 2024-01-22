@@ -15,7 +15,7 @@ public class Curso {
         alumnos = new ArrayList<Alumno>();
     }
 
-    public void alta(){
+    public void alta() throws AlumnoExcepcion{
         Alumno alumno;
         for (int n=0; n<NUMERO_ALUMNOS;n++){
             alumno = new Alumno();
@@ -39,6 +39,9 @@ public class Curso {
     }
 
     public ArrayList<Alumno> dameAlumnosEncimaMedia(){
+        if (this.notaMedia == -1){
+            calcularMedia();
+        }
         ArrayList<Alumno> lista = new ArrayList<Alumno>();
 
        /* for (int n=0; n< NUMERO_ALUMNOS; n++){
@@ -60,6 +63,9 @@ public class Curso {
     }
 
     public void escribeAlumnosEncimaMedia(){
+        if (this.notaMedia == -1){
+            calcularMedia();
+        }
         for (Alumno alumno : alumnos){
             if (alumno.getNota()>this.notaMedia){
                System.out.println(alumno.getNombre());
